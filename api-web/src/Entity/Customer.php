@@ -43,6 +43,7 @@ class Customer
      */
     private $invoices;
 
+
     public function __construct()
     {
         $this->invoices = new ArrayCollection();
@@ -131,4 +132,6 @@ class Customer
 
         return $this;
     }
+
+
 }
