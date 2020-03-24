@@ -8,6 +8,8 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\InvoiceRepository")
@@ -29,18 +31,24 @@ class Invoice
     /**
      * @ORM\Column(type="float")
      * @Groups({"invoices_read","customers_read"})
+     * @Assert\NotBlank
+     * @Assert\Type(type={"numeric"})
      */
     private $amount;
 
     /**
      * @ORM\Column(type="datetime")
      * @Groups({"invoices_read","customers_read"})
+     * @Assert\DateTime(message="la date doit etre au format 09/04/1994")
+     * @Assert\NotBlank
      */
     private $sentAt;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"invoices_read","customers_read"})
+     * @Assert\Choice({"SENT", "PAID","CANCELED"},message="faux statut")
+     * @Assert\NotBlank
      */
     private $status;
 
@@ -48,13 +56,15 @@ class Invoice
      * @ORM\ManyToOne(targetEntity="App\Entity\Customer", inversedBy="invoices")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"invoices_read"}) 
+     * @Assert\NotBlank(message="faut un customer !")
      */
     private $customer;
 
     /**
      * @ORM\Column(type="integer")
      * @Groups({"invoices_read","customers_read"}) 
-     * 
+     * @Assert\Type(type={"integer"} , message = "le chrono est un integer !" )
+     * @Assert\NotBlank(message="faut remplir ce champ")
      */
     private $chrono;
 
