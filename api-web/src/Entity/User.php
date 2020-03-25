@@ -13,7 +13,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @ApiResource
+ * @ApiResource(normalizationContext={"groups"={"user_read"}})
  * @UniqueEntity("email" , message ="email exist deja")
  */
 class User implements UserInterface
@@ -22,13 +22,13 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"customers_read","invoices_read"}) 
+     * @Groups({"customers_read","invoices_read","user_read"}) 
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"customers_read","invoices_read"}) 
+     * @Groups({"customers_read","invoices_read","user_read"}) 
      * @Assert\NotBlank(message = "L'email doit etre renseigné !")
      *  @Assert\Email(
      *     message = "The email '{{ value }}' is not a valid email."
@@ -44,13 +44,13 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Groups({"customers_read","invoices_read"}) 
      * @Assert\NotBlank(message="le mot de passe est obligatoire")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"customers_read","invoices_read","user_read"}) 
      * @Assert\NotBlank
      * @Assert\Length(
      *      min = 2,
@@ -64,6 +64,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"customers_read","invoices_read","user_read"}) 
      * @Groups({"customers_read"})
      * @Assert\NotBlank
      * @Assert\Length(
