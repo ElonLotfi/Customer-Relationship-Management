@@ -11,9 +11,11 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\InvoiceRepository")
- * @ApiResource(attributes={"pagination_enabled"=true , "order"={"amount": "ASC"}} , normalizationContext={"groups"={"invoices_read"}}
+ * @ApiResource(attributes={"pagination_enabled"=true , "order"={"amount": "ASC"}} , normalizationContext={"groups"={"invoices_read"}} ,
+ * denormalizationContext={"disable_type_enforcement"=true}
  * )
  * @ApiFilter(OrderFilter::class)
  */
@@ -78,7 +80,7 @@ class Invoice
         return $this->amount;
     }
 
-    public function setAmount(float $amount): self
+    public function setAmount($amount): self
     {
         $this->amount = $amount;
 
@@ -102,7 +104,7 @@ class Invoice
         return $this->status;
     }
 
-    public function setStatus(string $status): self
+    public function setStatus($status): self
     {
         $this->status = $status;
 
@@ -126,7 +128,7 @@ class Invoice
         return $this->chrono;
     }
 
-    public function setChrono(int $chrono): self
+    public function setChrono($chrono): self
     {
         $this->chrono = $chrono;
 
