@@ -8,6 +8,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryItemExtensionInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryCollectionExtensionInterface;
 use App\Entity\Customer;
 use App\Entity\Invoice;
+use App\Entity\User;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Core\Security;
 
@@ -35,7 +36,7 @@ class CurrentUserExtension implements QueryCollectionExtensionInterface ,QueryIt
 
         $user = $this->security->getUser();
         // si on demande des invoices ou des customers , agir sur les requetes pour quelle tienne compte l'utilisateur connecteé ;
-        if(! $this->auth->isGranted('ROLE_ADMIN')){ // ICI pour verifier si l'utilisateur connecté n'est pas l'administrateur
+        if(! $this->auth->isGranted('ROLE_ADMIN') && $user instanceof User){ // ICI pour verifier si l'utilisateur connecté n'est pas l'administrateur
         if($resourceClass === Invoice::class || $resourceClass === Customer::class){
             $rootAlias = $queryBuilder->getRootAliases()[0];
             if($resourceClass === Customer::class){
