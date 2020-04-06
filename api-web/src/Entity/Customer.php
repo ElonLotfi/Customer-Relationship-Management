@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use Doctrine\Common\Collections\Collection;
@@ -18,10 +19,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiFilter(SearchFilter::class, properties={"firstname" :"partial","lastname","company"})
  * 
  */
-class Customer 
+class Customer
 {
 
-    
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -206,11 +207,11 @@ class Customer
      * @Groups({"customers_read"})
      * @return float
      */
-    public function getTotalAmount():float
+    public function getTotalAmount(): float
     {
-            return array_reduce($this->invoices->toArray(),function($total ,$invoice){
-                return $total + $invoice->getAmount();
-            },0);
+        return array_reduce($this->invoices->toArray(), function ($total, $invoice) {
+            return $total + $invoice->getAmount();
+        }, 0);
     }
 
     /**
@@ -218,15 +219,11 @@ class Customer
      *@Groups({"customers_read"})
      * @return float
      */
-    public function getTotalUnpaidInvoices():float
+    public function getTotalUnpaidInvoices(): float
     {
-            return array_reduce($this->invoices->toArray(),function($total ,$invoice){
-                return $total + ($invoice->getStatus()=== "PAID" || $invoice->getStatus()=== "CANCELED" ?  0 : 
-                 $invoice->getAmount());
-            },0);
+        return array_reduce($this->invoices->toArray(), function ($total, $invoice) {
+            return $total + ($invoice->getStatus() === "PAID" || $invoice->getStatus() === "CANCELED" ?  0 :
+                $invoice->getAmount());
+        }, 0);
     }
-    
-    
-
-
 }

@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\InvoiceRepository")
- * @ApiResource(attributes={"pagination_enabled"=true , "order"={"amount": "ASC"}} , normalizationContext={"groups"={"invoices_read"}} ,
+ * @ApiResource(attributes={"pagination_enabled"=false , "order"={"amount": "ASC"}} , normalizationContext={"groups"={"invoices_read"}} ,
  * denormalizationContext={"disable_type_enforcement"=true}
  * )
  * @ApiFilter(OrderFilter::class)
@@ -140,9 +140,8 @@ class Invoice
      * @Groups({"invoices_read"})
      */
 
-    public function getUser(): User 
+    public function getUser(): User
     {
         return $this->customer->getUser();
-
     }
 }

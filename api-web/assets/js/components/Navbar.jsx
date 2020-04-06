@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-const nav = props => {
+const nav = (props) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <a className="navbar-brand" href="#">
@@ -21,12 +21,12 @@ const nav = props => {
       <div className="collapse navbar-collapse" id="navbarColor01">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <a className="nav-link" href="http://127.0.0.1:8000/#/customer/">
               Clients
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <a className="nav-link" href="http://127.0.0.1:8000/#/invoice/">
               Factures
             </a>
           </li>
