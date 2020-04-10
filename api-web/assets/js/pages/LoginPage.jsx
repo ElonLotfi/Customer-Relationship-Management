@@ -1,6 +1,7 @@
-import React, { useState, useContext } from "react";
-import authApi from "../services/authApi";
+import React, { useContext, useState } from "react";
+import Field from "../components/forms/field";
 import authContext from "../contexts/authContext";
+import authApi from "../services/authApi";
 
 // je recupere les donnee depuis le formulaire
 // j'envoie les donne a axios et je recupere le token
@@ -36,34 +37,26 @@ const Login = ({ history }) => {
     <>
       <h1>Page de connexion</h1>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">Email address</label>
-          <input
-            value={credentials.username}
-            type="email"
-            name="username"
-            className="form-control"
-            id="username"
-            aria-describedby="emailHelp"
-            placeholder="Enter email"
-            onChange={handlechange}
-          />
-          <small id="emailHelp" className="form-text text-muted">
-            We'll never share your email with anyone else.
-          </small>
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            value={credentials.password}
-            name="password"
-            type="password"
-            className="form-control"
-            id="password"
-            placeholder="Password"
-            onChange={handlechange}
-          />
-        </div>
+        <Field
+          value={credentials.username}
+          type="email"
+          name="username"
+          id="username"
+          placeholder="Enter email"
+          onChange={handlechange}
+          label="Email address"
+        />
+
+        <Field
+          value={credentials.password}
+          name="password"
+          type="password"
+          id="password"
+          placeholder="Password"
+          onChange={handlechange}
+          label="Mot de passe"
+        />
+
         <button className="button btn-success">connexion</button>
       </form>
     </>

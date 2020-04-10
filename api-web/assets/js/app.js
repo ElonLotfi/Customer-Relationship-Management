@@ -10,6 +10,7 @@ import Clients from "./pages/Clients";
 import Factures from "./pages/factures";
 import Home from "./pages/Home";
 import authApi from "./services/authApi";
+import Client from "./pages/Client";
 
 const App = () => {
   // Hook de authentification
@@ -36,6 +37,10 @@ const App = () => {
         <main className="container pt-5">
           <Switch>
             <LoginRoute path="/login"></LoginRoute>
+            <PrivateRoute
+              path="/customer/:id"
+              component={Client}
+            ></PrivateRoute>
             <PrivateRoute path="/invoice" component={Factures}></PrivateRoute>
             <PrivateRoute path="/customer" component={Clients}></PrivateRoute>
             <Route path="/" component={Home} />

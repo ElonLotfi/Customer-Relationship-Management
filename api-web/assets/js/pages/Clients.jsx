@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   default as Pagination,
   default as pagination,
 } from "../components/Pagination";
 import clientApi from "../services/clientApi";
-
 //table.table-hover pour creer le tableau
 //thead>tr>th*7 pour creer l'entete de tableau
 //tbody>tr>td*7 pour creer le body de tableauå
@@ -71,6 +71,13 @@ const Client = (props) => {
     <>
       <h1>List des Clients</h1>
 
+      <div className="float-right ml-auto mb-3">
+        <Link to="/customer/new" className="button btn-sm btn-success">
+          Ajouter un client
+        </Link>
+      </div>
+      <br></br>
+
       <form className="form-inline my-2 my-lg-0" className="center">
         <input
           className="form-control mr-sm-2"
@@ -119,6 +126,15 @@ const Client = (props) => {
                 >
                   Supprimer
                 </button>
+              </td>
+              <td>
+                <Link
+                  className="btn btn-sm btn-warning"
+                  to={"/customer/" + customers.id}
+                  Editer
+                >
+                  Editer
+                </Link>
               </td>
             </tr>
           ))}

@@ -62,6 +62,7 @@ class Customer
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"customers_read","invoices_read"})
+     * @Assert\NotBlank
      * @Assert\Email(
      *     message = "The email '{{ value }}' is not a valid email."
      * )
@@ -72,14 +73,6 @@ class Customer
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"customers_read","invoices_read"})
      * @Assert\NotBlank
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage = "Your company name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your company name cannot be longer than {{ limit }} characters",
-     *      allowEmptyString = false
-     * )
-
      */
     private $company;
 

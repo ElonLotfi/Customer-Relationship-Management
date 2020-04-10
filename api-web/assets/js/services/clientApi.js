@@ -14,7 +14,26 @@ function deleteCustomer(id) {
     );
 }
 
+function addCustomer(customer) {
+  return axios.post("http://localhost:8000/api/customers", customer);
+}
+
+function fetchCustomer(id) {
+  return axios
+    .get("http://localhost:8000/api/customers/" + id)
+    .then((response) => response.data);
+}
+
+function editCustomer(id, customer) {
+  return axios
+    .put("http://localhost:8000/api/customers/" + id, customer)
+    .then((response) => response.data);
+}
+
 export default {
   findCustomers,
   deleteCustomer,
+  addCustomer,
+  fetchCustomer,
+  editCustomer,
 };
