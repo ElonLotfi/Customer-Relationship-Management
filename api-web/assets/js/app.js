@@ -6,11 +6,12 @@ import LoginRoute from "./components/LoginRoute";
 import Navbar from "./components/Navbar";
 import PrivateRoute from "./components/PrivateRoute";
 import { default as AuthContext } from "./contexts/authContext";
+import Client from "./pages/Client";
 import Clients from "./pages/Clients";
+import facture from "./pages/facture";
 import Factures from "./pages/factures";
 import Home from "./pages/Home";
 import authApi from "./services/authApi";
-import Client from "./pages/Client";
 
 const App = () => {
   // Hook de authentification
@@ -36,6 +37,11 @@ const App = () => {
 
         <main className="container pt-5">
           <Switch>
+            <PrivateRoute
+              path="/invoice/:id"
+              component={facture}
+            ></PrivateRoute>
+
             <LoginRoute path="/login"></LoginRoute>
             <PrivateRoute
               path="/customer/:id"

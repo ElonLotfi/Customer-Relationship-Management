@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Pagination from "../components/Pagination";
 import invoiceApi from "../services/invoiceApi";
+import { Link } from "react-router-dom";
 
 const INVOICE_STATUS = {
   PAID: "-success",
   CANCELED: "-danger",
-  SENT: "-warning",
+  SENT: "-warning"
 };
 
-const factures = (props) => {
+const factures = props => {
   const [invoice, setInvoice] = useState([]);
   const [currentPage, setcurrentPage] = useState(1);
   const [search, setSearch] = useState("");
@@ -17,8 +18,8 @@ const factures = (props) => {
     try {
       const data = await invoiceApi
         .getInvoice()
-        .then((response) => response.data["hydra:member"]);
-      console.log(data);
+        .then(response => response.data["hydra:member"]);
+      //console.log(data);
       setInvoice(data);
     } catch (error) {
       console.log(error);
@@ -29,21 +30,21 @@ const factures = (props) => {
     fetchInvoices();
   }, []);
 
-  const handleChangePage = (page) => {
+  const handleChangePage = page => {
     setcurrentPage(page);
   };
 
   // fonction sert a chercher une invoice
-  const handleSearch = (event) => {
+  const handleSearch = event => {
     const listner = event.currentTarget.value;
     setSearch(listner);
-    console.log(search);
+    //console.log(search);
     setcurrentPage(1);
   };
 
   // Gestion de la recherche
   const searchFiltred = invoice.filter(
-    (c) =>
+    c =>
       c.customer.firstname.toLowerCase().includes(search.toLowerCase()) ||
       c.customer.lastname.toLowerCase().includes(search.toLowerCase()) ||
       c.status.toLowerCase().startsWith(search.toLowerCase()) ||
@@ -62,20 +63,26 @@ const factures = (props) => {
 
   // Gestion de supprision d'une invoice
 
-  const handleDelete = async (id) => {
+  const handleDelete = async id => {
     const backup = [...invoice];
-    setInvoice(invoice.filter((i) => i.id != id));
+    setInvoice(invoice.filter(i => i.id != id));
     try {
       await invoiceApi.delete(id);
     } catch (error) {
       setInvoice(backup);
-      console.log(error.response);
+      //console.log(error.response);
     }
   };
 
   return (
     <>
       <h1>Les factures</h1>
+      <div className="float-right ml-auto mb-3">
+        <Link to="/invoice/New" className="button btn-sm btn-success">
+          Ajouter une facture
+        </Link>
+      </div>
+      <br></br>
 
       <form className="form-inline my-2 my-lg-0" className="center">
         <input
@@ -99,7 +106,7 @@ const factures = (props) => {
         </thead>
 
         <tbody>
-          {invoicePerPage.map((invoice) => (
+          {invoicePerPage.map(invoice => (
             <tr key={invoice.id}>
               <td className="text-center">{invoice.chrono}</td>
               <td>
@@ -121,7 +128,12 @@ const factures = (props) => {
                 {invoice.customer.firstname} {invoice.customer.lastname}
               </td>
               <td>
-                <button className="button btn-sm btn-succes">editer</button>{" "}
+                <Link
+                  className="btn btn-sm btn-warning"
+                  to={"/invoice/" + invoice.id}
+                >
+                  Editer
+                </Link>
                 <button
                   className="button btn-sm btn-danger"
                   onClick={() => handleDelete(invoice.id)}
