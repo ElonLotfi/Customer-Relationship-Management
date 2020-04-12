@@ -113,7 +113,9 @@ const Client = props => {
               <td>{customers.email}</td>
               <td>{customers.company}</td>
               <td className="text-center">
-                <span className="badge badge-dark">3</span>
+                <span className="badge badge-dark">
+                  {customers.invoices.length}
+                </span>
               </td>
               <td className="text-center">
                 {customers.totalAmount.toLocaleString()}

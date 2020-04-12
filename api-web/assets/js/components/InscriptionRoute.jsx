@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import authContext from "../contexts/authContext";
 import { Redirect, Route } from "react-router-dom";
-import LoginPage from "../pages/LoginPage";
+import Inscription from "../pages/Inscription";
 
-const LoginRoute = ({ path }) => {
+const InscriptionRoute = ({ path }) => {
   const { isAuth } = useContext(authContext);
 
   return isAuth ? (
@@ -11,9 +11,9 @@ const LoginRoute = ({ path }) => {
   ) : (
     <Route
       path={path}
-      render={props => <LoginPage {...props}></LoginPage>}
+      render={props => <Inscription {...props}></Inscription>}
     ></Route>
   );
 };
 
-export default LoginRoute;
+export default InscriptionRoute;

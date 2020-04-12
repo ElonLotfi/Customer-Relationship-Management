@@ -12,6 +12,7 @@ import facture from "./pages/facture";
 import Factures from "./pages/factures";
 import Home from "./pages/Home";
 import authApi from "./services/authApi";
+import InscriptionRoute from "./components/InscriptionRoute";
 
 const App = () => {
   // Hook de authentification
@@ -23,7 +24,7 @@ const App = () => {
   // alimenter le contexte avec le hook qui le convient
   const contextValue = {
     isAuth,
-    setIsAuth,
+    setIsAuth
   };
 
   // creation d'une route pour les invoices et les customers
@@ -37,6 +38,8 @@ const App = () => {
 
         <main className="container pt-5">
           <Switch>
+            <InscriptionRoute path="/inscription"></InscriptionRoute>
+
             <PrivateRoute
               path="/invoice/:id"
               component={facture}
