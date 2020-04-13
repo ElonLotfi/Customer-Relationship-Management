@@ -53,7 +53,7 @@ const facture = ({ match, history }) => {
         amount,
         status,
         customer: customer.id,
-        sentAt: new Date().toLocaleDateString()
+        sentAt: new Date()
       });
     } catch (error) {
       console.log(error.response);
@@ -87,11 +87,13 @@ const facture = ({ match, history }) => {
   const onChange = event => {
     const { name, value } = event.currentTarget;
     setInvoice({ ...invoice, [name]: value });
+    //console.log(invoice);
   };
 
   // valider le formulaire
   const handleSubmit = async event => {
     event.preventDefault();
+    //console.log(invoice);
     try {
       if (edit) {
         const data = await invoiceApi.editInvoice(index, {
@@ -102,7 +104,14 @@ const facture = ({ match, history }) => {
 
         //console.log(data);
       } else {
-        const data = await invoiceApi.make(invoice);
+        // TODO :: le probleme se trouve ici
+        //console.log(invoice);
+        //console.log(c);
+        const data = await invoiceApi.make({
+          ...invoice,
+          customer: `/api/customers/${invoice.customer}`,
+          sentAt: new Date()
+        });
         console.log(data);
         history.replace("/invoice");
       }
@@ -153,6 +162,7 @@ const facture = ({ match, history }) => {
           value={invoice.customer}
           onChange={onChange}
         >
+          <option></option>
           {edit ? (
             <option value={c.id}>
               {c.firstname} {c.lastname}
@@ -160,7 +170,7 @@ const facture = ({ match, history }) => {
           ) : (
             c.map(i => {
               return (
-                <option value={"/api/customers/" + i.id} key={i.id}>
+                <option value={i.id} key={i.id}>
                   {i.firstname} {i.lastname}
                 </option>
               );

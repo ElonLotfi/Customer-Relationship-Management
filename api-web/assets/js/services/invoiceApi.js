@@ -11,7 +11,9 @@ function deleteInvoice(id) {
 }
 
 function makeInvoice(invoice) {
-  return axios.post("http://127.0.0.1:8000/api/invoices", invoice);
+  return axios
+    .post("http://127.0.0.1:8000/api/invoices", invoice)
+    .then(response => response.data);
 }
 
 function fetchInvoice(id) {
