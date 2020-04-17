@@ -40,6 +40,7 @@
 
 ### La partie front-end :
 - Mettre en place une interface avec React
+- Utilisation de [bootstrap](https://getbootstrap.com/ "bootstrap") pour concevoir l'application plus rapidement et plus facilement
 - Utilisation des dernières bonnes pratiques de React (Hooks, Contexts ...)
 - Utilisation de la librairie [Axios](https://github.com/axios/axios "Axios") pour faire des requêtes HTTP depuis Javascript ()
 - Déploiement de l'application sur [heroku](http://heroku.com "heroku")
