@@ -31,6 +31,7 @@
 
 - Création d'une API REST  avec [Symfony 4](https://symfony.com "Symfony 4") et [ApiPlatform](https://api-platform.com/ "ApiPlatform")
 - Gérer la sécurité et authentification grâce à [JWT](https://jwt.io/ "JWT")  
+- Utilisation de [Faker](https://github.com/fzaninotto/Faker "Faker") pour ajouter de faux utilisateurs dans ma base de données
 
 ------------
 
