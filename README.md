@@ -29,8 +29,8 @@
 
 ### La partie back-end :
 
-Création d'une API REST  avec [Symfony 4](https://symfony.com "Symfony 4") et [ApiPlatform](https://api-platform.com/ "ApiPlatform")
-Gérer la sécurité et authentification grâce à [JWT](https://jwt.io/ "JWT")  
+- Création d'une API REST  avec [Symfony 4](https://symfony.com "Symfony 4") et [ApiPlatform](https://api-platform.com/ "ApiPlatform")
+- Gérer la sécurité et authentification grâce à [JWT](https://jwt.io/ "JWT")  
 
 ------------
 
@@ -38,11 +38,11 @@ Gérer la sécurité et authentification grâce à [JWT](https://jwt.io/ "JWT")
 ------------
 
 
-###La partie front-end :
-Mettre en place une interface avec React
-Utilisation des dernières bonnes pratiques de React (Hooks, Contexts ...)
-Utilisation de la librairie [Axios](https://github.com/axios/axios "Axios") pour faire des requêtes HTTP depuis Javascript ()
-Déploiement de l'application sur [heroku](http://heroku.com "heroku")
+### La partie front-end :
+- Mettre en place une interface avec React
+- Utilisation des dernières bonnes pratiques de React (Hooks, Contexts ...)
+- Utilisation de la librairie [Axios](https://github.com/axios/axios "Axios") pour faire des requêtes HTTP depuis Javascript ()
+- Déploiement de l'application sur [heroku](http://heroku.com "heroku")
 
 ------------
 
@@ -53,7 +53,7 @@ Déploiement de l'application sur [heroku](http://heroku.com "heroku")
 
 ------------
 
-###Les outils nécessaires
+### Les outils nécessaires
 
 - le gestionnaire de versions GIT
 - PHP 7.1 minimum et MySQL via WAMP
@@ -69,17 +69,5 @@ Déploiement de l'application sur [heroku](http://heroku.com "heroku")
 
 
 
-
-
-
-
-
-
-
-**Table of Contents**
-
-[TOCM]
-
-[TOC]
 
 
