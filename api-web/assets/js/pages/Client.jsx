@@ -2,6 +2,7 @@ import React, { useState, Toast, useEffect } from "react";
 import Field from "../components/forms/field";
 import clientApi from "../services/clientApi";
 import { Link } from "react-router-dom";
+import ToastField from "../components/forms/ToastField";
 
 //firstname , lastname, email , company , user
 const client = props => {
@@ -52,9 +53,12 @@ const client = props => {
     try {
       if (edit) {
         await clientApi.editCustomer(id, newC);
+        ToastField.Toast("modification terminé");
         props.history.replace("/customer");
       } else {
         await clientApi.addCustomer(newC);
+        ToastField.Toast("client ajouté");
+
         props.history.replace("/customer");
       }
       setToast(true);

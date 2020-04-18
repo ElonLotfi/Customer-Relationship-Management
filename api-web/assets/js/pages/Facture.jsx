@@ -4,6 +4,7 @@ import Field from "../components/forms/field";
 import Select from "../components/forms/Select";
 import clientApi from "../services/clientApi";
 import invoiceApi from "../services/invoiceApi";
+import ToastField from "../components/forms/ToastField";
 
 const facture = ({ match, history }) => {
   // pour recuper l'id
@@ -100,6 +101,8 @@ const facture = ({ match, history }) => {
           ...invoice,
           customer: `/api/customers/${invoice.customer}`
         });
+        ToastField.Toast("facture edité");
+
         history.replace("/invoice");
 
         //console.log(data);
@@ -112,6 +115,7 @@ const facture = ({ match, history }) => {
           customer: `/api/customers/${invoice.customer}`,
           sentAt: new Date()
         });
+        ToastField.Toast("facture ajouté");
         console.log(data);
         history.replace("/invoice");
       }

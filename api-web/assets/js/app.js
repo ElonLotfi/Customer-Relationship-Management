@@ -13,6 +13,8 @@ import Factures from "./pages/factures";
 import Home from "./pages/Home";
 import authApi from "./services/authApi";
 import InscriptionRoute from "./components/InscriptionRoute";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   // Hook de authentification
@@ -56,6 +58,7 @@ const App = () => {
           </Switch>
         </main>
       </HashRouter>
+      <ToastContainer></ToastContainer>
     </AuthContext.Provider>
   );
 };

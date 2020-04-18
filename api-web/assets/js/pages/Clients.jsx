@@ -5,6 +5,7 @@ import {
   default as pagination
 } from "../components/Pagination";
 import clientApi from "../services/clientApi";
+import Loading from "../components/loader/Loader";
 //table.table-hover pour creer le tableau
 //thead>tr>th*7 pour creer l'entete de tableau
 //tbody>tr>td*7 pour creer le body de tableauå
@@ -13,11 +14,13 @@ const Client = props => {
   const [customer, setCustomer] = useState([]);
   const [currentPage, setcurrentPage] = useState(1);
   const [search, setSearch] = useState("");
+  const [loader, setLoader] = useState(true);
 
   const fetchCustomer = async () => {
     try {
       const data = await clientApi.findCustomers();
       setCustomer(data);
+      setLoader(false);
     } catch (error) {
       console.log(error.response);
     }
@@ -70,14 +73,12 @@ const Client = props => {
   return (
     <>
       <h1>List des Clients</h1>
-
       <div className="float-right ml-auto mb-3">
         <Link to="/customer/new" className="button btn-sm btn-success">
           Ajouter un client
         </Link>
       </div>
-      <br></br>
-
+      <br></br>{" "}
       <form className="form-inline my-2 my-lg-0" className="center">
         <input
           className="form-control mr-sm-2"
@@ -87,7 +88,6 @@ const Client = props => {
           onChange={handleSearch}
         />
       </form>
-
       <table className="table table-hover">
         <thead>
           <tr>
@@ -101,47 +101,49 @@ const Client = props => {
           </tr>
         </thead>
 
-        <tbody>
-          {customerPerPage.map(customers => (
-            <tr key={customers.id}>
-              <td>{customers.id}</td>
-              <td>
-                <a>
-                  {customers.firstname} {customers.lastname}
-                </a>
-              </td>
-              <td>{customers.email}</td>
-              <td>{customers.company}</td>
-              <td className="text-center">
-                <span className="badge badge-dark">
-                  {customers.invoices.length}
-                </span>
-              </td>
-              <td className="text-center">
-                {customers.totalAmount.toLocaleString()}
-              </td>
-              <td>
-                <button
-                  disabled={customers.invoices.length > 0}
-                  className="btn btn-sm btn-danger"
-                  onClick={() => handleDelete(customers.id)}
-                >
-                  Supprimer
-                </button>
-              </td>
-              <td>
-                <Link
-                  className="btn btn-sm btn-warning"
-                  to={"/customer/" + customers.id}
-                >
-                  Editer
-                </Link>
-              </td>
-            </tr>
-          ))}
-        </tbody>
+        {!loader && (
+          <tbody>
+            {customerPerPage.map(customers => (
+              <tr key={customers.id}>
+                <td>{customers.id}</td>
+                <td>
+                  <a>
+                    {customers.firstname} {customers.lastname}
+                  </a>
+                </td>
+                <td>{customers.email}</td>
+                <td>{customers.company}</td>
+                <td className="text-center">
+                  <span className="badge badge-dark">
+                    {customers.invoices.length}
+                  </span>
+                </td>
+                <td className="text-center">
+                  {customers.totalAmount.toLocaleString()}
+                </td>
+                <td>
+                  <button
+                    disabled={customers.invoices.length > 0}
+                    className="btn btn-sm btn-danger"
+                    onClick={() => handleDelete(customers.id)}
+                  >
+                    Supprimer
+                  </button>
+                </td>
+                <td>
+                  <Link
+                    className="btn btn-sm btn-warning"
+                    to={"/customer/" + customers.id}
+                  >
+                    Editer
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        )}
       </table>
-
+      {loader && <Loading></Loading>}
       {searchFiltred.length > itemPerPage && (
         <Pagination
           currentPage={currentPage}

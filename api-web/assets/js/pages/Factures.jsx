@@ -2,25 +2,28 @@ import React, { useEffect, useState } from "react";
 import Pagination from "../components/Pagination";
 import invoiceApi from "../services/invoiceApi";
 import { Link } from "react-router-dom";
+import Loader from "../components/loader/Loader";
 
 const INVOICE_STATUS = {
   PAID: "-success",
   CANCELED: "-danger",
-  SENT: "-warning"
+  SENT: "-warning",
 };
 
-const factures = props => {
+const factures = (props) => {
   const [invoice, setInvoice] = useState([]);
   const [currentPage, setcurrentPage] = useState(1);
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const fetchInvoices = async () => {
     try {
       const data = await invoiceApi
         .getInvoice()
-        .then(response => response.data["hydra:member"]);
+        .then((response) => response.data["hydra:member"]);
       //console.log(data);
       setInvoice(data);
+      setLoading(true);
     } catch (error) {
       console.log(error);
     }
@@ -30,12 +33,12 @@ const factures = props => {
     fetchInvoices();
   }, []);
 
-  const handleChangePage = page => {
+  const handleChangePage = (page) => {
     setcurrentPage(page);
   };
 
   // fonction sert a chercher une invoice
-  const handleSearch = event => {
+  const handleSearch = (event) => {
     const listner = event.currentTarget.value;
     setSearch(listner);
     //console.log(search);
@@ -44,7 +47,7 @@ const factures = props => {
 
   // Gestion de la recherche
   const searchFiltred = invoice.filter(
-    c =>
+    (c) =>
       c.customer.firstname.toLowerCase().includes(search.toLowerCase()) ||
       c.customer.lastname.toLowerCase().includes(search.toLowerCase()) ||
       c.status.toLowerCase().startsWith(search.toLowerCase()) ||
@@ -63,9 +66,9 @@ const factures = props => {
 
   // Gestion de supprision d'une invoice
 
-  const handleDelete = async id => {
+  const handleDelete = async (id) => {
     const backup = [...invoice];
-    setInvoice(invoice.filter(i => i.id != id));
+    setInvoice(invoice.filter((i) => i.id != id));
     try {
       await invoiceApi.delete(id);
     } catch (error) {
@@ -104,47 +107,51 @@ const factures = props => {
             <th>Client</th>
           </tr>
         </thead>
+        {loading && (
+          <tbody>
+            {invoicePerPage.map((invoice) => (
+              <tr key={invoice.id}>
+                <td className="text-center">{invoice.chrono}</td>
+                <td>
+                  <a>{invoice.amount.toLocaleString() + " $"}</a>
+                </td>
+                <td className="text-center">
+                  {new Date(invoice.sentAt).toLocaleDateString()}
+                </td>
 
-        <tbody>
-          {invoicePerPage.map(invoice => (
-            <tr key={invoice.id}>
-              <td className="text-center">{invoice.chrono}</td>
-              <td>
-                <a>{invoice.amount.toLocaleString() + " $"}</a>
-              </td>
-              <td className="text-center">
-                {new Date(invoice.sentAt).toLocaleDateString()}
-              </td>
+                <td className="text-center">
+                  <span
+                    className={"badge badge" + INVOICE_STATUS[invoice.status]}
+                  >
+                    {invoice.status}
+                  </span>
+                </td>
 
-              <td className="text-center">
-                <span
-                  className={"badge badge" + INVOICE_STATUS[invoice.status]}
-                >
-                  {invoice.status}
-                </span>
-              </td>
-
-              <td>
-                {invoice.customer.firstname} {invoice.customer.lastname}
-              </td>
-              <td>
-                <Link
-                  className="btn btn-sm btn-warning"
-                  to={"/invoice/" + invoice.id}
-                >
-                  Editer
-                </Link>
-                <button
-                  className="button btn-sm btn-danger"
-                  onClick={() => handleDelete(invoice.id)}
-                >
-                  supprimer
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
+                <td>
+                  {invoice.customer.firstname} {invoice.customer.lastname}
+                </td>
+                <td>
+                  <Link
+                    className="btn btn-sm btn-warning"
+                    to={"/invoice/" + invoice.id}
+                  >
+                    Editer
+                  </Link>
+                </td>
+                <td>
+                  <button
+                    className="btn btn-sm btn-danger"
+                    onClick={() => handleDelete(invoice.id)}
+                  >
+                    supprimer
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        )}
       </table>
+      {!loading && <Loader></Loader>}
 
       {searchFiltred.length > itemPerPage && (
         <Pagination
