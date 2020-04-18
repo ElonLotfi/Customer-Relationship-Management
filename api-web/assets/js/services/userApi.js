@@ -1,11 +1,9 @@
 import Axios from "axios";
-
+import { API_USERS } from "./config";
 function addUser(user) {
-  Axios.post("http://127.0.0.1:8000/api/users", user).then(
-    response => response.data
-  );
+  Axios.post(API_USERS, user).then((response) => response.data);
 }
 
 export default {
-  addUser
+  addUser,
 };

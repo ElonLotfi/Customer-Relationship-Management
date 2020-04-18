@@ -1,14 +1,13 @@
 import axios from "axios";
 import JwtDecode from "jwt-decode";
+import { API_LOGIN } from "./config";
 
 function authentification(credentials) {
-  return axios
-    .post("http://127.0.0.1:8000/api/login_check", credentials)
-    .then((response) => {
-      axios.defaults.headers["Authorization"] = "Bearer " + response.data.token;
-      window.localStorage.setItem("authToken", response.data.token);
-      return true;
-    });
+  return axios.post(API_LOGIN, credentials).then((response) => {
+    axios.defaults.headers["Authorization"] = "Bearer " + response.data.token;
+    window.localStorage.setItem("authToken", response.data.token);
+    return true;
+  });
 }
 
 function logOut() {

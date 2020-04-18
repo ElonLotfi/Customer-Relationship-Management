@@ -1,31 +1,28 @@
 import axios from "axios";
+import { API_INVOICE } from "./config";
 
 function getInvoice() {
-  return axios.get("http://127.0.0.1:8000/api/invoices");
+  return axios.get(API_INVOICE);
 }
 
 function deleteInvoice(id) {
   return axios
-    .delete("http://127.0.0.1:8000/api/invoices/" + id)
-    .then(response => console.log(response));
+    .delete(API_INVOICE + "/" + id)
+    .then((response) => console.log(response));
 }
 
 function makeInvoice(invoice) {
-  return axios
-    .post("http://127.0.0.1:8000/api/invoices", invoice)
-    .then(response => response.data);
+  return axios.post(API_INVOICE, invoice).then((response) => response.data);
 }
 
 function fetchInvoice(id) {
-  return axios
-    .get("http://127.0.0.1:8000/api/invoices/" + id)
-    .then(response => response.data);
+  return axios.get(API_INVOICE + "/" + id).then((response) => response.data);
 }
 
 function editInvoice(id, invoice) {
   return axios
-    .put("http://127.0.0.1:8000/api/invoices/" + id, invoice)
-    .then(response => response.data);
+    .put(API_INVOICE + "/" + id, invoice)
+    .then((response) => response.data);
 }
 
 export default {
@@ -33,5 +30,5 @@ export default {
   delete: deleteInvoice,
   make: makeInvoice,
   fetchInvoice,
-  editInvoice
+  editInvoice,
 };
