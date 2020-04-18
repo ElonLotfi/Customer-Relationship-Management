@@ -1,24 +1,29 @@
 import React, { useState } from "react";
 import Field from "../components/forms/field";
 import userApi from "../services/userApi";
+import Axios from "axios";
+import { API_USERS } from "../services/config";
 
 const inscription = ({ history }) => {
   const [i, setI] = useState({
     email: "",
     password: "",
     firstname: "",
-    lastname: ""
+    lastname: "",
   });
 
-  const handlechange = event => {
+  const handlechange = (event) => {
     const { name, value } = event.currentTarget;
     setI({ ...i, [name]: value });
   };
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const data = await userApi.addUser(i);
+      //const data = await userApi.addUser(i);
+      const data = await Axios.post(API_USERS, i).then(
+        (response) => response.data
+      );
       history.replace("/login");
     } catch (error) {
       console.log(error.response);
