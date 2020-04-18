@@ -6,7 +6,7 @@
 ### Technologie utilisée : 
 - Symfony 4 
 - ApiPlatform 
-- React 
+- React  
 
 ------------
 
