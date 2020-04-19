@@ -20,7 +20,11 @@
     "build": "encore production --progress"
   },
   "dependencies": {
+<<<<<<< HEAD
     "axios": "^0.18.1",
+=======
+    "axios": "^0.18.0",
+>>>>>>> parent of e2e27e6... refactorisation du code
     "dotenv": "^8.2.0",
     "jwt-decode": "^2.2.0",
     "react": "^16.8.6",

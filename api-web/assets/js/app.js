@@ -8,8 +8,13 @@ import PrivateRoute from "./components/PrivateRoute";
 import { default as AuthContext } from "./contexts/authContext";
 import Client from "./pages/Client";
 import Clients from "./pages/Clients";
+<<<<<<< HEAD
 import facture from "./pages/facture";
 import Factures from "./pages/factures";
+=======
+import facture from "./pages/Facture";
+import Factures from "./pages/Factures";
+>>>>>>> parent of e2e27e6... refactorisation du code
 import Home from "./pages/Home";
 import authApi from "./services/authApi";
 import InscriptionRoute from "./components/InscriptionRoute";
@@ -26,7 +31,11 @@ const App = () => {
   // alimenter le contexte avec le hook qui le convient
   const contextValue = {
     isAuth,
+<<<<<<< HEAD
     setIsAuth
+=======
+    setIsAuth,
+>>>>>>> parent of e2e27e6... refactorisation du code
   };
 
   // creation d'une route pour les invoices et les customers
