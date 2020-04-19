@@ -1,2 +1,8 @@
 2ea46e,127.0.0.1,GET,https://127.0.0.1:8000/,1587326010,3cd0a9,500
 3cd0a9,127.0.0.1,GET,https://127.0.0.1:8000/,1587326010,,500
+0afb0a,127.0.0.1,GET,http://127.0.0.1:8000/,1587327457,,200
+35554f,127.0.0.1,GET,http://localhost:8000/api/users,1587327478,5f4e52,500
+5f4e52,127.0.0.1,POST,http://localhost:8000/api/users,1587327478,,500
+96727e,127.0.0.1,GET,http://localhost:8000/api/,1587327500,,200
+943d82,127.0.0.1,GET,http://localhost:8000/favicon.ico,1587327501,c218bd,404
+c218bd,127.0.0.1,GET,http://localhost:8000/favicon.ico,1587327501,,404
