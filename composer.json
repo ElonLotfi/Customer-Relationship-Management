@@ -1,4 +1,6 @@
 {
+  "name": "mhamed-app",
+  "description": "Customer Relationship Management",
   "type": "project",
   "license": "proprietary",
   "require": {
