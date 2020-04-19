@@ -1,6 +1,6 @@
 import axios from "axios";
 import JwtDecode from "jwt-decode";
-import { API_LOGIN } from "./config";
+import { API_LOGIN } from "../config";
 
 function authentification(credentials) {
   return axios.post(API_LOGIN, credentials).then((response) => {

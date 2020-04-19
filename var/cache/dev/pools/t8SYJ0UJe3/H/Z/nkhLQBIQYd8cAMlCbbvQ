@@ -1,0 +1,56 @@
+<?php //property_metadata_5c88047efaa50eab936a13b612b2c276
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['ApiPlatform\\Core\\Metadata\\Property\\PropertyMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Metadata\\Property\\PropertyMetadata')),
+        clone ($p['Symfony\\Component\\PropertyInfo\\Type'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\PropertyInfo\\Type')),
+    ],
+    null,
+    [
+        'ApiPlatform\\Core\\Metadata\\Property\\PropertyMetadata' => [
+            'type' => [
+                $o[1],
+            ],
+            'description' => [
+                'return l\'utilisateur concerné par la facture',
+            ],
+            'readable' => [
+                true,
+            ],
+            'writable' => [
+                false,
+            ],
+            'readableLink' => [
+                true,
+            ],
+            'writableLink' => [
+                true,
+            ],
+            'required' => [
+                false,
+            ],
+            'identifier' => [
+                false,
+            ],
+            'initializable' => [
+                false,
+            ],
+        ],
+        'Symfony\\Component\\PropertyInfo\\Type' => [
+            'builtinType' => [
+                1 => 'object',
+            ],
+            'nullable' => [
+                1 => false,
+            ],
+            'class' => [
+                1 => 'App\\Entity\\User',
+            ],
+            'collection' => [
+                1 => false,
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

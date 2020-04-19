@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_INVOICE } from "./config";
+import { API_INVOICE } from "../config";
 
 function getInvoice() {
   return axios.get(API_INVOICE);

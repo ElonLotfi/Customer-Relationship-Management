@@ -1534,7 +1534,8 @@
             "logging",
             "monolog",
             "productivity"
-        ]
+        ],
+        "abandoned": true
     },
     {
         "name": "egulias/email-validator",

@@ -1,0 +1,3 @@
+<?php //route_name_a7a6e29ac48324dc483c5cc55b1b28f4
+
+return [PHP_INT_MAX, 'api_invoices_get_collection'];

@@ -12,24 +12,23 @@ const Login = ({ history }) => {
 
   const [credentials, setCredentials] = useState({
     username: "",
-    password: ""
+    password: "",
   });
-  const handlechange = event => {
+  const handlechange = (event) => {
     const { value, name } = event.currentTarget;
     setCredentials({ ...credentials, [name]: value });
   };
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault(); // pour ne pas recharger la page
     //console.log(credentials);
     try {
       await authApi.authentification({
         username: credentials.username,
-        password: credentials.password
+        password: credentials.password,
       });
       setIsAuth(true);
       ToastField.Toast("Tu es connecté");
-
       history.replace("/");
     } catch (error) {
       console.log("error");

@@ -67,7 +67,7 @@ class __TwigTemplate_b80d4842b21256fcdd3bbbf326b9cfdc84a76c936a19de37d1bb8ba5ac1
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        echo "Mon application react";
+        echo "M'HAMED APP ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -168,7 +168,7 @@ class __TwigTemplate_b80d4842b21256fcdd3bbbf326b9cfdc84a76c936a19de37d1bb8ba5ac1
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block title \"Mon application react\" %}
+{% block title \"M'HAMED APP \" %}
 
 {% block stylesheets %}
 

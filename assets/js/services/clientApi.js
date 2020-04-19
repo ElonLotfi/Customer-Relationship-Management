@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_CUSTOMER } from "./config";
+import { API_CUSTOMER } from "../config";
 
 function findCustomers() {
   return axios

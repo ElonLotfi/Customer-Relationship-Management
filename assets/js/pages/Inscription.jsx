@@ -7,15 +7,15 @@ const inscription = ({ history }) => {
     email: "",
     password: "",
     firstname: "",
-    lastname: ""
+    lastname: "",
   });
 
-  const handlechange = event => {
+  const handlechange = (event) => {
     const { name, value } = event.currentTarget;
     setI({ ...i, [name]: value });
   };
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const data = await userApi.addUser(i);
