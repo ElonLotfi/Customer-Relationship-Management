@@ -1,4 +1,10 @@
 {
+  "name": "deploy",
+  "version": "0.1.0",
+  "engines": {
+    "node": "9.5.0",
+    "npm": "5,7,1"
+  },
   "devDependencies": {
     "@babel/preset-react": "^7.9.4",
     "@symfony/webpack-encore": "^0.28.2",
