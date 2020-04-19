@@ -3,3 +3,4 @@ api-web/src/Migrations/Version20200323154724.php
 api-web/src/Migrations/Version20200323163936.php
 api-web/src/Migrations/Version20200323170552.php
 *.json
+*.log
