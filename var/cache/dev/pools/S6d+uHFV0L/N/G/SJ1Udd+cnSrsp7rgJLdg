@@ -1,0 +1,30 @@
+<?php //subresource_operations_0f3dec1c81b3be88b675833a1c4bf8af
+
+return [PHP_INT_MAX, [
+    'api_customers_invoices_get_subresource' => [
+        'property' => 'invoices',
+        'collection' => true,
+        'resource_class' => 'App\\Entity\\Invoice',
+        'shortNames' => [
+            'Invoice',
+            'Customer',
+        ],
+        'identifiers' => [
+            [
+                'id',
+                'App\\Entity\\Customer',
+                true,
+            ],
+        ],
+        'operation_name' => 'invoices_get_subresource',
+        'route_name' => 'api_customers_invoices_get_subresource',
+        'path' => '/customers/{id}/invoices.{_format}',
+        'defaults' => [],
+        'requirements' => [],
+        'options' => [],
+        'host' => '',
+        'schemes' => [],
+        'condition' => '',
+        'controller' => null,
+    ],
+]];

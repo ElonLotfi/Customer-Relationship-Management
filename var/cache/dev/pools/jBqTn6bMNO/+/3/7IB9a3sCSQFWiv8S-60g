@@ -1,0 +1,55 @@
+<?php //%255BApp%255CEntity%255CCustomer%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+        clone ($p['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
+        clone ($p['ApiPlatform\\Core\\Annotation\\ApiFilter'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiFilter')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'repositoryClass' => [
+                'App\\Repository\\CustomerRepository',
+            ],
+            'collectionOperations' => [
+                1 => [
+                    'get',
+                    'post',
+                ],
+            ],
+            'itemOperations' => [
+                1 => [
+                    'get',
+                    'put',
+                    'delete',
+                ],
+            ],
+            'attributes' => [
+                1 => [
+                    'normalization_context' => [
+                        'groups' => [
+                            'customers_read',
+                        ],
+                    ],
+                ],
+            ],
+            'filterClass' => [
+                2 => 'ApiPlatform\\Core\\Bridge\\Doctrine\\Orm\\Filter\\SearchFilter',
+            ],
+            'properties' => [
+                2 => [
+                    'firstname' => 'partial',
+                    'lastname',
+                    'company',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+        $o[2],
+    ],
+    []
+); }];
