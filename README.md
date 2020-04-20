@@ -1,7 +1,10 @@
 ## Customer Relationship Management - Gestion de la Relation au Client 
 
-
-
+### Pour essayer mon application :
+https://mhamed-app.herokuapp.com 
+vous pouvez créer un compte ou utiliser mon compte administrateur :)
+   username : admin@lotfi.fr
+   mot de passe : lotfi
 
 ### Technologie utilisée : 
 - Symfony 4
