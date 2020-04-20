@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Field from "../components/forms/field";
 import userApi from "../services/userApi";
+import ToastField from "../components/forms/ToastField";
 
 const inscription = ({ history }) => {
   const [i, setI] = useState({
@@ -19,8 +20,10 @@ const inscription = ({ history }) => {
     event.preventDefault();
     try {
       const data = await userApi.addUser(i);
+      ToastField.Toast("Inscription réussie");
       history.replace("/login");
     } catch (error) {
+      ToastField.Toast("Veuillez corriger vos données");
       console.log(error.response);
     }
   };

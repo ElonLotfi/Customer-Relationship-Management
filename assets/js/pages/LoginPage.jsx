@@ -28,9 +28,10 @@ const Login = ({ history }) => {
         password: credentials.password,
       });
       setIsAuth(true);
-      ToastField.Toast("Tu es connecté");
+      ToastField.Toast("Bonjour " + credentials.username);
       history.replace("/");
     } catch (error) {
+      ToastField.Toast("Échec de la connexion");
       console.log("error");
     }
   };

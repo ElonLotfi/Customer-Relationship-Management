@@ -17,7 +17,7 @@ const facture = ({ match, history }) => {
     amount: "",
     customer: "",
     status: "",
-    sentAt: new Date().toLocaleDateString()
+    sentAt: new Date().toLocaleDateString(),
   });
   // recuprer l'invoice en cas d'edition
   useEffect(() => {
@@ -40,7 +40,7 @@ const facture = ({ match, history }) => {
   const [error, setError] = useState({
     amount: "",
     status: "",
-    customer: ""
+    customer: "",
   });
 
   // gerer la modification
@@ -54,7 +54,7 @@ const facture = ({ match, history }) => {
         amount,
         status,
         customer: customer.id,
-        sentAt: new Date()
+        sentAt: new Date(),
       });
     } catch (error) {
       console.log(error.response);
@@ -73,7 +73,7 @@ const facture = ({ match, history }) => {
   };
 
   // recuperer un client , en cas d'edition de facture
-  const fetchOneCustomer = async index => {
+  const fetchOneCustomer = async (index) => {
     console.log("one");
 
     try {
@@ -85,23 +85,23 @@ const facture = ({ match, history }) => {
   };
 
   // recuperer les donnés de chaque field
-  const onChange = event => {
+  const onChange = (event) => {
     const { name, value } = event.currentTarget;
     setInvoice({ ...invoice, [name]: value });
     //console.log(invoice);
   };
 
   // valider le formulaire
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     //console.log(invoice);
     try {
       if (edit) {
         const data = await invoiceApi.editInvoice(index, {
           ...invoice,
-          customer: `/api/customers/${invoice.customer}`
+          customer: `/api/customers/${invoice.customer}`,
         });
-        ToastField.Toast("facture edité");
+        ToastField.Toast("Facture edité");
 
         history.replace("/invoice");
 
@@ -113,9 +113,9 @@ const facture = ({ match, history }) => {
         const data = await invoiceApi.make({
           ...invoice,
           customer: `/api/customers/${invoice.customer}`,
-          sentAt: new Date()
+          sentAt: new Date(),
         });
-        ToastField.Toast("facture ajouté");
+        ToastField.Toast("Facture ajouté");
         console.log(data);
         history.replace("/invoice");
       }
@@ -172,7 +172,7 @@ const facture = ({ match, history }) => {
               {c.firstname} {c.lastname}
             </option>
           ) : (
-            c.map(i => {
+            c.map((i) => {
               return (
                 <option value={i.id} key={i.id}>
                   {i.firstname} {i.lastname}

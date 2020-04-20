@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   default as Pagination,
-  default as pagination
+  default as pagination,
 } from "../components/Pagination";
 import clientApi from "../services/clientApi";
 import Loading from "../components/loader/Loader";
@@ -10,7 +10,7 @@ import Loading from "../components/loader/Loader";
 //thead>tr>th*7 pour creer l'entete de tableau
 //tbody>tr>td*7 pour creer le body de tableauå
 
-const Client = props => {
+const Client = (props) => {
   const [customer, setCustomer] = useState([]);
   const [currentPage, setcurrentPage] = useState(1);
   const [search, setSearch] = useState("");
@@ -30,12 +30,13 @@ const Client = props => {
     fetchCustomer();
   }, []);
 
-  const handleDelete = async id => {
+  const handleDelete = async (id) => {
     const backup = [...customer];
 
-    setCustomer(customer.filter(customer => customer.id != id));
+    setCustomer(customer.filter((customer) => customer.id != id));
     try {
       await clientApi.deleteCustomer(id);
+      ToastField.Toast("Client supprimée");
     } catch (error) {
       setCustomer(backup);
       console.log(error.response);
@@ -46,19 +47,19 @@ const Client = props => {
   // 1 je calcul le nombre de page necessaire
   const itemPerPage = 8;
 
-  const handleChangePage = page => {
+  const handleChangePage = (page) => {
     setcurrentPage(page);
   };
 
   // ici je dois filter les clients || Je montre que les clients dont j'ai besoin
 
-  const handleSearch = event => {
+  const handleSearch = (event) => {
     const listner = event.currentTarget.value;
     setSearch(listner);
     setcurrentPage(1);
   };
   const searchFiltred = customer.filter(
-    c =>
+    (c) =>
       c.firstname.toLowerCase().includes(search.toLowerCase()) ||
       c.lastname.toLowerCase().includes(search.toLowerCase()) ||
       c.company.toLowerCase().includes(search.toLowerCase())
@@ -103,7 +104,7 @@ const Client = props => {
 
         {!loader && (
           <tbody>
-            {customerPerPage.map(customers => (
+            {customerPerPage.map((customers) => (
               <tr key={customers.id}>
                 <td>{customers.id}</td>
                 <td>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import ToastField from "../components/forms/ToastField";
 
 //firstname , lastname, email , company , user
-const client = props => {
+const client = (props) => {
   // pour recuperer l'id de customers
   const id = props.match.params.id;
 
@@ -14,7 +14,7 @@ const client = props => {
     firstname: "",
     lastname: "",
     email: "",
-    company: ""
+    company: "",
   });
 
   // gestion d'etat d'erreurs
@@ -22,7 +22,7 @@ const client = props => {
     firstname: "",
     lastname: "",
     email: "",
-    company: ""
+    company: "",
   });
   // pour connaitre si on est entrain d'editer un client ou de creer un autre
   const [edit, setEdit] = useState(false);
@@ -48,16 +48,16 @@ const client = props => {
   }, [id]);
 
   // envoyer le formulaire
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       if (edit) {
         await clientApi.editCustomer(id, newC);
-        ToastField.Toast("modification terminé");
+        ToastField.Toast("Client edité");
         props.history.replace("/customer");
       } else {
         await clientApi.addCustomer(newC);
-        ToastField.Toast("client ajouté");
+        ToastField.Toast("Client ajouté");
 
         props.history.replace("/customer");
       }
@@ -69,7 +69,7 @@ const client = props => {
       if (data) {
         const apiError = {};
 
-        data.map(index => {
+        data.map((index) => {
           //console.log(index);
 
           apiError[index.propertyPath] = index.message;
@@ -80,7 +80,7 @@ const client = props => {
     }
   };
 
-  const onChange = event => {
+  const onChange = (event) => {
     const { name, value } = event.currentTarget;
     setNewC({ ...newC, [name]: value });
   };
