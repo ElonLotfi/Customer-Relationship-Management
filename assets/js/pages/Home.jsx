@@ -1,21 +1,19 @@
 import React from "react";
 
-const home = props => {
+const home = (props) => {
   return (
     <div className="jumbotron">
       <h1 className="display-3">Hello, world!</h1>
-      <p className="lead">
-        This is a simple hero unit, a simple jumbotron-style component for
-        calling extra attention to featured content or information.
-      </p>
+      <p className="lead">Développé par M'HAMED LOTFI</p>
       <hr className="my-4" />
-      <p>
-        It uses utility classNamees for typography and spacing to space content
-        out within the larger container.
-      </p>
+      <p>Pour plus d'informations</p>
       <p className="lead">
-        <a className="btn btn-primary btn-lg" href="#" role="button">
-          Learn more
+        <a
+          className="btn btn-primary btn-lg"
+          href="https://github.com/JugheadTn"
+          role="button"
+        >
+          mon Github
         </a>
       </p>
     </div>
