@@ -1,5 +1,4 @@
 {
-  "build/app.css": "http://localhost:8090/build/app.css",
   "build/app.js": "http://localhost:8090/build/app.js",
   "build/runtime.js": "http://localhost:8090/build/runtime.js",
   "build/vendors~app.css": "http://localhost:8090/build/vendors~app.css",
