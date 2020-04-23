@@ -4,8 +4,8 @@
 
 ### Pour essayer mon application : 
       Vous pouvez créer un compte ou utiliser mon compte administrateur :)
-      username : admin@lotfi.fr
-      mot de passe : lotfi
+      username : demo@unice.fr
+      mot de passe : password
       https://mhamed-app.herokuapp.com
 
 
