@@ -15,7 +15,7 @@ const nav = ({ history }) => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav className="navbar navbar-dark navbar-expand-md fixed-top bg-dark">
       <NavLink className="navbar-brand" to="/">
         Application
       </NavLink>
@@ -47,7 +47,10 @@ const nav = ({ history }) => {
             </ul>
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <button onClick={handleLogOut} className="btn btn-danger">
+                <button
+                  onClick={handleLogOut}
+                  className="btn btn-sm btn-danger"
+                >
                   Deconnexion
                 </button>
               </li>
@@ -58,12 +61,13 @@ const nav = ({ history }) => {
         <>
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <NavLink to="/login" className="btn btn-success">
+              <NavLink to="/login" className="btn btn-sm btn-success">
                 Connexion
               </NavLink>
-            </li>
+            </li>{" "}
+            &nbsp
             <li className="nav-item">
-              <NavLink to="/inscription" className="btn btn-warning">
+              <NavLink to="/inscription" className="btn btn-sm btn-warning">
                 Inscription
               </NavLink>
             </li>

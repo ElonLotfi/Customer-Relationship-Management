@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { HashRouter, Route, Switch, withRouter } from "react-router-dom";
-import "../css/app.css";
 import LoginRoute from "./components/LoginRoute";
 import Navbar from "./components/Navbar";
 import PrivateRoute from "./components/PrivateRoute";
