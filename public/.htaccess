@@ -64,4 +64,3 @@ DirectoryIndex index.php
         # RedirectTemp cannot be used instead
     </IfModule>
 </IfModule>
-Header set Access-Control-Allow-Origin "*"
