@@ -6,7 +6,7 @@
       Vous pouvez créer un compte ou utiliser mon compte administrateur :)
       username : demo@unice.fr
       mot de passe : password
-      https://mhamed-app.herokuapp.com
+      http://mhamed-app.herokuapp.com
 
 
    
