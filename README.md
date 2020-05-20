@@ -1,14 +1,6 @@
 ## Customer Relationship Management - Gestion de la Relation au Client 
 
 
-
-### Pour essayer mon application : 
-      Vous pouvez créer un compte ou utiliser mon compte administrateur :)
-      username : demo@unice.fr
-      mot de passe : password
-      http://mhamed-app.herokuapp.com
-
-
    
    
 
