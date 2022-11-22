@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "@babel/preset-react": "^7.9.4",
-    "@symfony/webpack-encore": "^0.28.2",
+    "@symfony/webpack-encore": "^4.1.2",
     "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
     "@vue/babel-preset-jsx": "^1.1.2",
     "core-js": "^3.0.0",
